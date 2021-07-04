@@ -50,7 +50,12 @@ void FrameBufferWritePixel(FrameBuffer_t *frame, long int x, long int y, int red
 	    *(frame->fb_memp + location + 1) = green;     // green
 	    *(frame->fb_memp + location + 2) = red;    // red
 	    *(frame->fb_memp + location + 3) = transparency;      // transparency
-	}
+	}else if (frame->bpp == 24){
+    //24 bits per pixel paint
+        *(frame->fb_memp + location) = blue;        // blue
+	    *(frame->fb_memp + location + 1) = green;     // green
+	    *(frame->fb_memp + location + 2) = red;    // red
+    }
 	//assume 16 bits per pixel paint 
 	else  {
 		unsigned short int temp = red<<11 | green << 5 | blue;
